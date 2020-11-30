@@ -1,7 +1,9 @@
 FROM maven:3.6.0-jdk-11-slim AS build
-COPY src /home/app/src
-COPY pom.xml /home/app
-RUN mvn -f /home/app/pom.xml clean package
+WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN --mount=type=cache,target=/root/.m2  mvn clean package -Dmaven.test.skip
+RUN mkdir -p target/docker-packaging && cd target/docker-packaging && jar -xf ../app*.jar
 
 
 FROM openjdk:8-jdk-alpine
