@@ -42,7 +42,7 @@ public class UserControllerTest {
 	
 	@AfterEach
 	public void tearDown() {
-		System.out.println("end");
+		System.out.println("end test");
 	}
 	
 	@Test
