@@ -18,6 +18,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.validation.BindingResult;
 
 import com.shoppingcar.controller.UserController;
 import com.shoppingcar.model.User;
@@ -37,12 +38,11 @@ public class UserControllerTest {
 	@BeforeEach
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
-		System.out.println("arranco");
 	}
 	
 	@AfterEach
 	public void tearDown() {
-		System.out.println("termina");
+		System.out.println("end");
 	}
 	
 	@Test
@@ -61,10 +61,22 @@ public class UserControllerTest {
 		verify(userService, times(1)).findById(7L);
 	}
 	
+	@Test
+	@Order(3)
+	public void loginTest() {
+		User mockUser = this.builderUser();
+		BindingResult result = null;
+		Mockito.when(userService.findByNameAndPassword("Test", "pass")).thenReturn(mockUser);
+		userController.login(mockUser, result);
+		verify(userService, times(1)).findByNameAndPassword("Test", "pass");
+		assertEquals(mockUser.getName(), "Test");
+	}
+	
 	public User builderUser() {
 		User mockUser = new User();
 		mockUser.setId(7L);
 		mockUser.setName("Test");
+		mockUser.setPassword("pass");
 		mockUser.setDataCreate(new Date());
 		mockUser.setState(true);
 		
