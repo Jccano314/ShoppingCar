@@ -2,7 +2,6 @@ com\shoppingcar\controller\ProductController.class
 com\shoppingcar\ServletInitializer.class
 com\shoppingcar\controller\RoleController.class
 com\shoppingcar\service\IProductService.class
-META-INF\MANIFEST.MF
 com\shoppingcar\controller\UserController.class
 com\shoppingcar\repository\IUserRepository.class
 com\shoppingcar\service\ProductServiceImpl.class
@@ -16,6 +15,4 @@ com\shoppingcar\service\IRoleService.class
 com\shoppingcar\service\UserServiceImpl.class
 com\shoppingcar\filter\SimpleCorsFilter.class
 com\shoppingcar\model\User.class
-META-INF\maven\com.example\shoppingCart\pom.properties
-META-INF\maven\com.example\shoppingCart\pom.xml
 com\shoppingcar\ShoppingCarApplication.class
