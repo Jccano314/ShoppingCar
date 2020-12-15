@@ -10,7 +10,7 @@ public interface IRoleService {
 	
 	public Role findById(Long id);
 	
-	public Role save(Role product);
+	public Role save(Role role);
 	
 	public void delete(Long id);
 }
